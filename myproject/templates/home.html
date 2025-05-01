@@ -7,5 +7,6 @@ HOME
 {% block content %}
 <h1>Home</h1>
     <p>Check out the <a href = "/about">ABOUT Page</a></p>
-    <p>Check out the <a href = {% url 'posts:list' %}>POSTS Page</a></p>
+    <p>Check out the <a href = {% url 'posts:list' %}>POSTS Pages</a></p>
+    <a href = "/weather/">Weather Optimizations</a>
 {% endblock %}

@@ -27,6 +27,12 @@ urlpatterns = [
     path('about/', views.about),
     path('posts/', include('posts.urls')),
     path('users/', include('users.urls')),
+    path('expense_tracker/', include('expense_tracker.urls')),  
+    path('marketplace/', include('marketplace.urls')),
+    path('selling_planner/', include('selling_planner.urls')),
+    path('weather/', include('weather.urls')),  
+    path('market_prices/', include('market_prices.urls')),
+    path('crop_monitoring/', include('crop_monitoring.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
