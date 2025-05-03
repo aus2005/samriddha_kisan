@@ -5,6 +5,7 @@ class CreatePost(forms.ModelForm):
     class Meta:
         model = models.Post
         fields = ['title', 'body', 'category', 'banner']
+        exclude = ['slug', 'date', 'author']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,6 +22,9 @@ class CreateReply(forms.ModelForm):
     class Meta:
         model = models.Reply
         fields = ['body']
+        labels = {
+            'body': '',
+        }
         widgets = {
-            'body': forms.Textarea(attrs={'rows': 4, 'cols': 40, 'placeholder': 'Write your reply here'}),
+            'body': forms.Textarea(attrs={'rows': 4, 'cols': 40, 'placeholder': 'आफ्नो प्रतिक्रिया यहाँ लेख्नुहोस्।'}),
         }

@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 #     return render(request, 'posts/posts_list.html')
 
 def posts_list(request):
-    posts = Post.objects.all().order_by('-date')
+    posts = Post.objects.exclude(slug='').order_by('-date')
     return render(request, 'posts/posts_list.html', {'posts': posts})
 
 def post_page(request, slug):

@@ -81,8 +81,7 @@ a:hover {
     padding: 0.5rem;
     border-radius: 10px;
     border-color: #07d133;
-    width: 125px;
-    color:#07d133;
+    color:#2a803e;
 }
 .form-submit:hover {
     background-color: #07d133;
@@ -164,3 +163,100 @@ a:hover {
       grid-template-columns: 1fr;
     }
   }
+.post-container {
+    display: flex;
+    flex-direction:column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+    background-color: rgb(186, 249, 191);
+    color:#5cd84e;
+    border-radius: 1rem;
+
+}  
+.post-container h1 {
+    font-size: 3rem;
+    color: #5cd84e;
+}
+.post-container img {
+    max-width: fit-content;
+    max-height: fit-content;
+    height: auto;
+    border-radius: 10px;
+    align-self: center;
+}
+.reply-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+    background-color: rgb(210, 248, 213);
+    color:#5cd84e;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+.reply-container h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    
+}
+.reply-container h3 {
+    font-size:smaller;
+}
+
+.new-post-button {
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+    align-content:center;
+    background-color: white;
+    color: #5cd84e;
+    border-style: dotted;
+    border-color: #5cd84e;
+    border-radius: 1rem;
+    font-size: small;
+    max-height: min-content;
+    max-width: fit-content;
+}
+
+.new-post-button:hover{
+    background-color: rgb(186, 249, 191);
+    color:#5cd84e;
+    border-style: solid;
+}
+
+.post-preview {
+    display: flex;
+    flex-direction:column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+    background-color: white;
+    color: #5cd84e;
+    border-radius: 1rem;
+    border-style:groove;
+    border-color: #5cd84e;
+}
+.post-preview:hover {
+    background-color: rgb(192, 255, 197);
+    color:#5cd84e;
+    border-style: solid;
+    border-color: #5cd84e;
+}
+.login-button {
+    padding: 1rem;
+    margin: auto;
+    background-color: white;
+    color: #5cd84e;
+    border-color: #5cd84e;
+    border-radius: 1rem;
+    font-size: small;
+    max-height: min-content;
+    max-width: min-content;
+}
+.login-button:hover{
+    background-color: #5cd84e;
+    color:white;
+    border-style: solid;
+}

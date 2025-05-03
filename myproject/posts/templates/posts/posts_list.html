@@ -8,23 +8,30 @@ Posts
     <section>
     <h1>पोस्टहरू  </h1>
     {% if user.is_authenticated %}
-    <div style="margin-bottom: 1rem;">
-        <a href="{% url 'posts:new-post' %}" class="new-post-button"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
-            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
-          </svg>
-          नयाँ पोस्ट सिर्जना गर्नुहोस्</a>
-    </div>
+        <a href="{% url 'posts:new-post' %}" class="new-post-button"> 
+            
+          <span title="नयाँ पोस्ट सिर्जना गर्नुहोस्">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="45" height="45">
+                <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+              </svg>
+          </span>
+        </a>
     {% endif %}
     {% for post in posts %}
-        <article class = "post">
+        <div class = "post-preview">
             <h2> 
-                <a href = "{% url 'posts:page' slug=post.slug %}">
-                {{ post.title }}
-                </a>
+                {% if post.slug %}
+                    <a href="{% url 'posts:page' slug=post.slug %}">
+                    {{ post.title }}
+                    </a>
+                {% else %}
+                    {{ post.title }}
+                {% endif %}
             </h2>
             <p>{{ post.date }} मा {{ post.author }} द्वारा</p>
+            <hr>
             <p>{{ post.body }}</p>
-        </article>
+    </div>
     {%endfor%}
     </section>
 {% endblock %}
