@@ -34,5 +34,5 @@ urlpatterns = [
     path('market_prices/', include('market_prices.urls')),
     path('crop_monitoring/', include('crop_monitoring.urls')),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
