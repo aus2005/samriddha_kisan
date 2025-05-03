@@ -5,10 +5,11 @@ Register new user
 {% endblock %}
 
 {% block content %}
-   <h1> Register new user </h1>
+   <h1> नयाँ प्रयोगकर्ता दर्ता गर्नुहोस् </h1>
    <form class ="form-with-validation"action="/users/register/" method = "post">
     {% csrf_token %}
     {{ form }}
-    <button class= "form-submit"> Submit </button>
+    <button class= "form-submit"> पेश गर्नुहोस्
+   </button>
    </form>
 {% endblock %}

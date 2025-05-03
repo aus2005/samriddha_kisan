@@ -6,14 +6,80 @@
 
 {% block content %}
     <section>
+        {% if post.banner %}
         <img 
         class = "banner"
         src= "{{ post.banner.url }}" 
         alt="{{ post.title }} image" 
         />
+        {% endif %}
         <h1>{{ post.title }} </h1>
         <p>{{ post.date }}</p>
         <p>{{ post.body }}</p>
-        <p>Check out the <a href = "/">HOME Page</a></p>
+        <p>{{ post.author}}</p>
+        {% if post.category %}
+            <p>श्रेणी: {{ post.category.name }}</p>
+        {% else %}
+            <p>श्रेणी: अन्य</p>
+        {% endif %}
+        
+        <hr>
+        <form action = "{% url 'posts:toggle-like' slug=post.slug %}" method = "post">
+            {% csrf_token %}
+            <button type="submit" class="like-button">
+                {% if user.is_authenticated %} 
+                    {% if user in post.likes.all %}
+                        सहमति हटाउनुहोस्
+                    {% else %}
+                        सहमति व्यक्त गर्नुहोस्
+                    {% endif %}
+                {% else %}
+                    <p>लाइक गर्नको लागि तपाईंले लग इन गर्नुपर्छ।.</p>
+                    <a href="{% url 'users:login' %}">लगइन</a>                
+                {% endif %}
+                ({{ post.likes.count }})
+            </button>
+        </form>
+        <hr>
+        <h2>प्रतिक्रियाहरु</h2>
+        {% for reply in replies %}
+          <div style = "margin-bottom: 1 rem; padding-left: 1rem; border-left: 2px solid #ccc;">
+            <p><strong>{{ reply.author }}</strong>:</p>
+            <p>{{ reply.body }}</p>
+            <p><small>{{ reply.date }}</small></p>
+            <form method="post" action="{% url 'posts:like-reply' reply.id %}">
+                {% csrf_token %}
+                <button type="submit">
+                {% if user.is_authenticated%}
+                  {% if user in reply.likes.all %}
+                    सहमति हटाउनुहोस्
+                  {% else %}
+                    सहमति व्यक्त गर्नुहोस्
+                  {% endif %}
+                {% else %}
+                    <p>लाइक गर्नको लागि तपाईंले लग इन गर्नुपर्छ।.</p>
+                    <a href="{% url 'users:login' %}">लगइन</a>
+                {% endif %}
+                  ({{ reply.total_likes }})
+                </button>
+              </form>
+        {% empty %}
+            <p> कुनै प्रतिक्रियाहरू छैनन्।</p>
+        {% endfor %}
+            </div>
+        <hr>
+        <h2>प्रतिक्रिया लेख्नुहोस्</h2>
+        {% if user.is_authenticated %}
+        <form method = "post">
+            {% csrf_token %}
+            {{ reply_form.as_p }}
+            <button type="submit">पेश गर्नुहोस्
+
+            </button>
+        </form>
+        {% else %}
+            <p>प्रतिक्रिया छोड्नको लागि तपाईं लग इन हुनुपर्छ।.</p>
+            <a href="{% url 'users:login' %}">लगइन </a>
+        {% endif %}
     </section>
 {% endblock %}
