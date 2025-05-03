@@ -15,7 +15,10 @@ nav {
     padding: 1rem;
     background-color: #07d133;
     color: white;
-}
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+ }
 
 main {
     padding: 1rem;
@@ -27,7 +30,10 @@ section {
     gap: 1rem;
 }
 
-h1,
+h1{
+    font-size: 3rem;
+    color: #07d133;
+}
 h2 {
     font-size: 2.5rem;
 }
@@ -74,7 +80,13 @@ a:hover {
 .form-submit {
     padding: 0.5rem;
     border-radius: 10px;
+    border-color: #07d133;
     width: 125px;
+    color:#07d133;
+}
+.form-submit:hover {
+    background-color: #07d133;
+    color: white;
 }
 
 .helptext {
@@ -102,13 +114,11 @@ a:hover {
 
 .logout-button {
     font-size: 2.5rem;
-    background-color: rgb(0, 0, 0, 0);
+    background-color: #07d133;
+    color:#7ed879;
     border: none;
 }
 
-.logout-button:hover {
-    opacity: .85;
-}
   .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
