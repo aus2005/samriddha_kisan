@@ -15,7 +15,7 @@ Posts
           नयाँ पोस्ट सिर्जना गर्नुहोस्</a>
     </div>
     {% endif %}
-    {% for post in posts%}
+    {% for post in posts %}
         <article class = "post">
             <h2> 
                 <a href = "{% url 'posts:page' slug=post.slug %}">
