@@ -1,83 +1,82 @@
 <!DOCTYPE html>
 <html lang="ne">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>आय र खर्च ट्र्याकर</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container my-5">
+      <h1 class="text-center mb-4">आय र खर्च ट्र्याकर</h1>
 
-<div class="container my-5">
-    <h1 class="text-center mb-4">आय र खर्च ट्र्याकर</h1>
-
-   
-    <div class="row mb-4">
+      <div class="row mb-4">
         <div class="col-md-6">
-            <div class="card text-white bg-success">
-                <div class="card-body">
-                    <h5 class="card-title">कुल आय</h5>
-                    <p class="card-text fs-4">रु. {{ total_income }}</p>
-                </div>
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title">कुल आय</h5>
+              <p class="card-text fs-4">रु. {{ total_income }}</p>
             </div>
+          </div>
         </div>
         <div class="col-md-6">
-            <div class="card text-white bg-danger">
-                <div class="card-body">
-                    <h5 class="card-title">कुल खर्च</h5>
-                    <p class="card-text fs-4">रु. {{ total_expense }}</p>
-                </div>
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title">कुल खर्च</h5>
+              <p class="card-text fs-4">रु. {{ total_expense }}</p>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Add Transaction Form -->
-    <div class="card mb-4">
+      <!-- Add Transaction Form -->
+      <div class="card mb-4">
         <div class="card-header">नयाँ विवरण थप्नुहोस्</div>
         <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">सेभ गर्नुहोस्</button>
-            </form>
+          <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">सेभ गर्नुहोस्</button>
+          </form>
         </div>
-    </div>
+      </div>
 
-
-    <div class="card">
+      <div class="card">
         <div class="card-header">हालको विवरणहरू</div>
         <div class="card-body p-0">
-            <table class="table table-striped mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th>मिति</th>
-                        <th>विवरण</th>
-                        <th>रकम (रु.)</th>
-                        <th>प्रकार</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for tx in transactions %}
-                        <tr>
-                            <td>{{ tx.date }}</td>
-                            <td>{{ tx.description }}</td>
-                            <td>{{ tx.amount }}</td>
-                            <td>
-                                {% if tx.type == 'income' %}
-                                    <span class="badge bg-success">आय</span>
-                                {% else %}
-                                    <span class="badge bg-danger">खर्च</span>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% empty %}
-                        <tr><td colspan="4" class="text-center">हालसम्म कुनै विवरण छैन।</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+          <table class="table table-striped mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>मिति</th>
+                <th>विवरण</th>
+                <th>रकम (रु.)</th>
+                <th>प्रकार</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tx in transactions %}
+              <tr>
+                <td>{{ tx.date }}</td>
+                <td>{{ tx.description }}</td>
+                <td>{{ tx.amount }}</td>
+                <td>
+                  {% if tx.type == 'income' %}
+                  <span class="badge bg-success">आय</span>
+                  {% else %}
+                  <span class="badge bg-danger">खर्च</span>
+                  {% endif %}
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4" class="text-center">हालसम्म कुनै विवरण छैन।</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-
-</div>
-
-</body>
+  </body>
 </html>
