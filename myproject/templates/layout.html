@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="ne">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %} Django app {% endblock %} 
-    </title>
-
+    <title>{% block title %}समृद्ध किसान{% endblock %}</title>
     <script src="{% static 'static/js/main.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'static/css/style.css' %}" />
   </head>
   <body>
-    <nav class="flex flex-wrap items-center gap-4 p-3 bg-white shadow text-sm">
-      <a
-        href="/"
-        class="flex items-center gap-2 text-gray-800 hover:text-green-600"
-      >
-        <span title="गृहपृष्ठ">
+    <nav
+      class="flex flex-wrap items-center justify-between p-3 bg-green-500 text-white shadow text-sm"
+    >
+      <div class="flex items-center gap-3">
+        <a href="/" class="hover:text-lime-100" title="गृहपृष्ठ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -33,53 +29,47 @@
               d="M3 9.75L12 3l9 6.75V21a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 21V9.75z"
             />
           </svg>
-        </span>
-      </a>
+        </a>
+      </div>
 
-      {% if user.is_authenticated %}
-      <form
-      action="{% url 'users:logout' %}"
-      method="post"
-      class="flex items-center gap-2 text-gray-800 hover:text-green-600"
-    >
-      {% csrf_token %}
-      <button
-        title="बाहिर निस्कनु"
-        class="logout-button"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke="currentColor"
-          width="30"  
-          height="30"
+      <div class="flex items-center gap-4">
+        {% if user.is_authenticated %}
+        <form
+          action="{% url 'users:logout' %}"
+          method="post"
+          class="flex items-center gap-2"
         >
-          <path
-            d="M15 12L2 12M2 12L5.5 9M2 12L5.5 15"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.3531 21.8897 19.1752 21.9862 17 21.9983M9.00195 17C9.01406 19.175 9.11051 20.3529 9.87889 21.1213C10.5202 21.7626 11.4467 21.9359 13 21.9827"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        <span></span>
-      </button>
-    </form>
-    
-
-
-      {% else %}
-      <a
-        href="{% url 'users:register' %}"
-        class="flex items-center gap-2 text-gray-800 hover:text-green-600"
-      >
-        <span title="दर्ता गर्नुहोस्">
+          {% csrf_token %}
+          <button title="बाहिर निस्कनु" class="hover:text-lime-100">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="currentColor"
+              width="30"
+              height="30"
+            >
+              <path
+                d="M15 12L2 12M2 12L5.5 9M2 12L5.5 15"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.3531 21.8897 19.1752 21.9862 17 21.9983M9.00195 17C9.01406 19.175 9.11051 20.3529 9.87889 21.1213C10.5202 21.7626 11.4467 21.9359 13 21.9827"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </form>
+        {% else %}
+        <a
+          href="{% url 'users:register' %}"
+          title="दर्ता गर्नुहोस्"
+          class="hover:text-lime-100"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -95,14 +85,12 @@
               d="M5.121 17.804A4 4 0 0112 14a4 4 0 016.879 3.804M12 12a4 4 0 100-8 4 4 0 000 8z"
             />
           </svg>
-        </span>
-      </a>
-
-      <a
-        href="{% url 'users:login' %}"
-        class="flex items-center gap-2 text-gray-800 hover:text-green-600"
-      >
-        <span title="लगइन">
+        </a>
+        <a
+          href="{% url 'users:login' %}"
+          title="लगइन"
+          class="hover:text-lime-100"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -118,11 +106,11 @@
               d="M15 12H3m6-6l-6 6 6 6m9 4v-1a3 3 0 00-3-3H5a3 3 0 00-3 3v1"
             />
           </svg>
-        </span>
-      </a>
-      {% endif %}
+        </a>
+        {% endif %}
+      </div>
     </nav>
 
-    <main>{% block content %} {% endblock %}</main>
+    <main class="mt-4 px-4">{% block content %} {% endblock %}</main>
   </body>
 </html>

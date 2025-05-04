@@ -1,14 +1,14 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-# Create your models here.
+
 
 class Post(models.Model):
     CATEGORY_CHOICES = [('crops', 'बाली'), ('fertilizers', 'मलहरू '), ('market', 'बजार'), ('other', 'अन्य')]
     
     title = models.CharField(max_length=75)
     body = models.TextField()
-    slug = models.SlugField(unique=True)  # Removed blank=True to enforce non-empty slugs
+    slug = models.SlugField(unique=True)  
     date = models.DateTimeField(auto_now_add=True)
     banner = models.ImageField(blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
@@ -17,7 +17,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             base_slug = slugify(self.title)
-            # Handle empty title case
+           
             if not base_slug:
                 base_slug = f"post-{self.pk or 'new'}"
             slug = base_slug

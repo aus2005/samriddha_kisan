@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = (
@@ -15,6 +16,8 @@ class Transaction(models.Model):
         ('loan_payment', 'ऋण भुक्तानी'),
         ('misc', 'अन्य'),
     )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, verbose_name="प्रयोगकर्ता")
 
     date = models.DateField(auto_now_add=True, verbose_name="मिति")
     type = models.CharField(max_length=7, choices=TRANSACTION_TYPES, verbose_name="प्रकार")
