@@ -169,14 +169,14 @@ a:hover {
     gap: 1rem;
     padding: 1rem;
     margin: auto;
-    background-color: rgb(186, 249, 191);
-    color:#5cd84e;
+    background-color: rgb(203, 255, 198);
+    color:#00a010;
     border-radius: 1rem;
 
 }  
 .post-container h1 {
     font-size: 3rem;
-    color: #5cd84e;
+    color: #038510;
 }
 .post-container img {
     max-width: fit-content;
@@ -191,8 +191,8 @@ a:hover {
     gap: 1rem;
     padding: 1rem;
     margin: auto;
-    background-color: rgb(210, 248, 213);
-    color:#5cd84e;
+    background-color: rgb(213, 255, 209);
+    color:#00a010;
     font-size: 1rem;
     border-radius: 1rem;
 }

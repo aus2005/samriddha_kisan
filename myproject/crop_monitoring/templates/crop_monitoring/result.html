@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Crop Monitoring
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Diagnosis Result</h2>
+    
+    <div class="post-container">
+            <h1>🌱 Disease Detected:</h1>
+            <h2>{{ disease_english }}</h2>
+
+            <h1>🧪 Remedy</h1>
+            <h2>{{ remedy_english }}</h2>
+
+            <hr>
+
+            <div class="mt-4 text-center">
+                <a href="{% url 'crop_monitoring:upload' %}" class="form-submit">Upload Another</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
