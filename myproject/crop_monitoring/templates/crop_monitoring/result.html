@@ -7,19 +7,19 @@ Crop Monitoring
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center">Diagnosis Result</h2>
+    <h2 class="text-center">स्क्यान परिणाम</h2>
     
     <div class="post-container">
-            <h1>🌱 Disease Detected:</h1>
-            <h2>{{ disease_english }}</h2>
+            <h2>🌱 पत्ता लागेको रोग:</h2>
+            <h3>{{ disease_nepali }}</h3>
 
-            <h1>🧪 Remedy</h1>
-            <h2>{{ remedy_english }}</h2>
+            <h2>🧪 उपचार</h2>
+            <h3>{{ remedy_nepali }}</h3>
 
             <hr>
 
             <div class="mt-4 text-center">
-                <a href="{% url 'crop_monitoring:upload' %}" class="form-submit">Upload Another</a>
+                <a href="{% url 'crop_monitoring:upload' %}" class="form-submit">अर्को तस्वीर अपलोड गर्नुहोस्</a>
             </div>
         </div>
     </div>

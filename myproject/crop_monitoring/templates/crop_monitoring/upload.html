@@ -2,18 +2,20 @@
 {% load static %}
 
 {% block title %}
-Crop Monitoring
+तस्वीर अपलोड
 {% endblock %}
 
 {% block content %}
 <body class="bg-light">
-<div class="container mt-5">
-    <h2 class="mb-4 text-center">📷 Upload Plant Image</h2>
+<div class="post-container">
+    <h2 class="mb-4 text-center">            
+        बिरुवाको तस्वीर अपलोड गर्नुहोस्
+    </h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="text-center">
-            <button type="submit" class="form-submit">Scan for Disease</button>
+            <button type="submit" class="form-submit">रोग पत्ता लगाउनुहोस्</button>
         </div>
     </form>
 </div>
