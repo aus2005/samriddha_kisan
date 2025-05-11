@@ -1,6 +1,7 @@
+# weather/urls.py
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.placeholder, name='placeholder'),
+    path('', views.weather_dashboard, name='weather'),  
 ]

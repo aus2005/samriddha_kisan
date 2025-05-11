@@ -33,6 +33,7 @@ urlpatterns = [
     path('weather/', include('weather.urls')),  
     path('market_prices/', include('market_prices.urls')),
     path('crop_monitoring/', include('crop_monitoring.urls')),
+    path('weather/', include('weather.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
