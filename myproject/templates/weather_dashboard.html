@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}नेपालको मौसम ड्यासबोर्ड{% endblock %}
+
+{% block content %}
+  <style>
+    body {
+      background: linear-gradient(to bottom, #a2f3b8, #7bf5b1);
+      font-family: "Poppins", sans-serif;
+    }
+    h1 {
+      font-weight: 700;
+      color: #198754;
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0 1rem 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 260px;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .weather-icon {
+      height: 60px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+
+  <h1>नेपालभरको मौसम विवरण</h1>
+
+  <div class="card-container">
+    {% for item in weather_data %}
+    <div class="card">
+      <h5>{{ item.district }}</h5>
+      {% if item.error %}
+      <p class="error">{{ item.error }}</p>
+      {% else %}
+      <img
+        class="weather-icon"
+        src="http://openweathermap.org/img/wn/{{ item.icon }}@4x.png"
+        alt="Weather Icon"
+      />
+      <p><strong>{{ item.temperature }}°C</strong></p>
+      <p>स्थिति: {{ item.description_np }}</p>
+      <p style="color: green">सुझाव: {{ item.farming_tip }}</p>
+      <p>आर्द्रता: {{ item.humidity }}%</p>
+      <p>हावा गति: {{ item.wind }} मि/से</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
