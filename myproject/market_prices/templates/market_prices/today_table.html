@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>कालिमाटी बजार मूल्य तालिका</h1>
+
+<form method="post" action="{% url 'update_prices' %}">
+    {% csrf_token %}
+    <button type="submit" class="form-submit">मूल्य अपडेट गर्नुहोस्</button>
+</form>
+
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for items...">
+
+<div>
+    {{ table_html|safe }}
+</div>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const rows = document.querySelectorAll("table tbody tr");
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(input) ? "" : "none";
+        });
+    }
+</script>
+{% endblock %}
