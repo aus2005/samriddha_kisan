@@ -4,7 +4,7 @@ from .models import PriceTable
 from datetime import date
 
 def scrape_and_save_table():
-    url = "https://kalimatimarket.gov.np/price"
+    url = "https://kalimatimarket.gov.np"
     response = requests.get(url)
 
     if response.status_code != 200:

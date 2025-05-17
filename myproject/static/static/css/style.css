@@ -13,11 +13,12 @@ body {
 
 nav {
     padding: 1rem;
-    background-color: #07d133;
-    color: white;
+    background-color: #198754;
+    color: #198754;
     display: flex;
-    justify-content: left;
     gap: 1rem;
+    font-size: small;
+    justify-content: space-between;
  }
 
 main {
@@ -32,7 +33,7 @@ section {
 
 h1{
     font-size: 3rem;
-    color: #07d133;
+    color: #198754;
 }
 h2 {
     font-size: 2.5rem;
@@ -80,11 +81,11 @@ a:hover {
 .form-submit {
     padding: 0.5rem;
     border-radius: 10px;
-    border-color: #07d133;
-    color:#2a803e;
+    border-color: #198754;
+    color:#198754;
 }
 .form-submit:hover {
-    background-color: #07d133;
+    background-color: #198754;
     color: white;
 }
 
@@ -113,70 +114,25 @@ a:hover {
 
 .logout-button {
     font-size: 2.5rem;
-    background-color: #07d133;
+    background-color: #198754;
     color:#7ed879;
     border: none;
 }
 
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .feature-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #6cff6c;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-    height: 150px;
-    transition: background-color 0.2s ease;
-  }
-
-  .feature-item:hover {
-    background-color: #6cff50;
-    color: #ffffff;
-  }
-
-  .feature-item svg {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-    color: white;
-  }
-
-  .feature-item div {
-    font-size: 16px;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 600px) {
-    .feature-grid {
-      grid-template-columns: 1fr;
-    }
-  }
 .post-container {
     display: flex;
     flex-direction:column;
     gap: 1rem;
     padding: 1rem;
     margin: auto;
-    background-color: rgb(186, 249, 191);
-    color:#5cd84e;
+    background-color: rgb(208, 246, 211);
+    color:#0c5633;
     border-radius: 1rem;
 
 }  
 .post-container h1 {
     font-size: 3rem;
-    color: #5cd84e;
+    color: #198754;
 }
 .post-container img {
     max-width: fit-content;
@@ -191,8 +147,8 @@ a:hover {
     gap: 1rem;
     padding: 1rem;
     margin: auto;
-    background-color: rgb(210, 248, 213);
-    color:#5cd84e;
+    background-color: rgb(208, 246, 211);
+    color:#0c5633;
     font-size: 1rem;
     border-radius: 1rem;
 }
@@ -211,9 +167,8 @@ a:hover {
     margin: auto;
     align-content:center;
     background-color: white;
-    color: #5cd84e;
+    color: #198754;
     border-style: dotted;
-    border-color: #5cd84e;
     border-radius: 1rem;
     font-size: small;
     max-height: min-content;
@@ -221,42 +176,63 @@ a:hover {
 }
 
 .new-post-button:hover{
-    background-color: rgb(186, 249, 191);
-    color:#5cd84e;
+    background-color: #a0e0c2;
+    color:#198754;
     border-style: solid;
 }
 
 .post-preview {
-    display: flex;
-    flex-direction:column;
-    gap: 1rem;
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
     padding: 1rem;
-    margin: auto;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
     background-color: white;
-    color: #5cd84e;
+    color:#0c5633;
     border-radius: 1rem;
     border-style:groove;
-    border-color: #5cd84e;
+    border-color: #198754;
 }
 .post-preview:hover {
-    background-color: rgb(192, 255, 197);
-    color:#5cd84e;
+    background-color: #a0e0c2;
+    color:#198754;
     border-style: solid;
-    border-color: #5cd84e;
+    border-color: #198754;
+}
+.post-preview h1{
+    color:#0c5633
+}
+.important-post {
+    background-color: #fff7e6; /* light yellow-orange background */
+    border-color: #ff8c00;     /* dark orange border */
+    color: #000;               /* black text for readability */
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+}
+.important-post h1{
+    color: red;
+}
+.important-post:hover {
+    background-color: #ffe4b5; /* light yellow-orange background */
+    border-color: #ff4500;     /* dark orange border */
+    color: #000;               /* black text for readability */
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
 }
 .login-button {
     padding: 1rem;
     margin: auto;
     background-color: white;
-    color: #5cd84e;
-    border-color: #5cd84e;
+    color: #198754;
+    border-color: #198754;
     border-radius: 1rem;
     font-size: small;
     max-height: min-content;
     max-width: min-content;
 }
 .login-button:hover{
-    background-color: #5cd84e;
+    background-color: #198754;
     color:white;
     border-style: solid;
 }
