@@ -4,13 +4,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
-<<<<<<< HEAD
     """
     Extended profile model linked to Django's built-in User model.
     Includes role, city, and phone number fields.
     """
-=======
->>>>>>> db2e6ad432884dfe7a479dffc3334da707f7322b
     ROLE_CHOICES = (
         ('farmer', 'किसान'),
         ('buyer', 'खरिदकर्ता'),
