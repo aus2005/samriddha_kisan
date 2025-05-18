@@ -2,9 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 
-
 class Post(models.Model):
-    CATEGORY_CHOICES = [('crops', 'बाली'), ('fertilizers', 'मलहरू '), ('market', 'बजार'), ('other', 'अन्य')]
+    CATEGORY_CHOICES = [('important', 'महत्वपूर्ण'), ('crops', 'बाली'), ('fertilizers', 'मलहरू '),('market', 'बजार'), ('other', 'अन्य')]
     
     title = models.CharField(max_length=75)
     body = models.TextField()
