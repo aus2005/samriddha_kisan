@@ -80,6 +80,22 @@ def get_weather_for_district(district_obj):
         }
 
 def weather_dashboard(request):
-    weather_data = [get_weather_for_district(d) for d in DISTRICTS]
-    return render(request, 'weather_dashboard.html', {'weather_data': weather_data})
+    selected_district = request.GET.get('district', '')
+
+    # Get list of district names for dropdown
+    district_names = [(d["en"], d["np"]) for d in DISTRICTS]
+
+    if selected_district:
+        district_obj = next((d for d in DISTRICTS if d["en"] == selected_district), None)
+        if not district_obj:
+            return HttpResponseBadRequest("Invalid district.")
+        weather_data = [get_weather_for_district(district_obj)]
+    else:
+        weather_data = []
+
+    return render(request, 'weather_dashboard.html', {
+        'weather_data': weather_data,
+        'district_names': district_names,
+        'selected_district': selected_district,
+    })
 
