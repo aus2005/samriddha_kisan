@@ -23,13 +23,13 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('item/',include('item.urls')),
+     
     path('', views.homepage),
     path('about/', views.about),
     path('posts/', include('posts.urls')),
     path('users/', include('users.urls')),
     path('expense_tracker/', include('expense_tracker.urls')),  
-    path('marketplace/', include('marketplace.urls')),
+    path('marketplace/', include('item.urls')),
     path('selling_planner/', include('selling_planner.urls')),
     path('weather/', include('weather.urls')),  
     path('market_prices/', include('market_prices.urls')),

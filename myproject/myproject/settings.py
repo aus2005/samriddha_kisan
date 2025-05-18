@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     'users',
-    'expense_tracker', 'marketplace', 'selling_planner',
+    'expense_tracker', 'selling_planner',
     'weather', 'market_prices', 'crop_monitoring',
     'calendar_app',
     'item',
