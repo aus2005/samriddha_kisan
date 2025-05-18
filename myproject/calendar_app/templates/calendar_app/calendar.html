@@ -1,104 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Crop Emoji Calendar</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #f5f5f5;
-    }
-    table {
-      border-collapse: collapse;
-      margin: 20px auto;
-    }
-    th, td {
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      border: 1px solid #ccc;
-      font-size: 18px;
-    }
-    th {
-      background-color: #9be78e;
-    }
-    td.today {
-      background-color: #d6fcd6;
-    }
-  </style>
-</head>
-<body>
+{% extends "layout.html" %}
 
-  <h2>🌾 Crop Calendar</h2>
-  <label for="seed-date">Select Seeding Date: </label>
-  <input type="date" id="seed-date" />
+{% block title %}🌾 बाली पात्रो{% endblock %}
 
-  <div id="calendar-container"></div>
+{% block content %}
+  <h2>🌾 बाली पात्रो</h2>
 
-  <script>
-    const emojis = {
-      seed: '🌱',
-      water: '💧',
-      fertilize: '🧪',
-      harvest: '🌾'
-    };
+  <form method="get">
+    <label for="crop-select">बाली छान्नुहोस्:</label>
+    <select name="crop" id="crop-select" onchange="this.form.submit()">
+      <option disabled {% if not selected_crop %}selected{% endif %}>-- छनौट गर्नुहोस् --</option>
+      {% for crop in crops %}
+        <option value="{{ crop }}" {% if crop == selected_crop %}selected{% endif %}>{{ crop }}</option>
+      {% endfor %}
+    </select>
+  </form>
 
-    const generateCalendar = (seedDateStr) => {
-      const seedDate = new Date(seedDateStr);
-      const calendarContainer = document.getElementById('calendar-container');
-      calendarContainer.innerHTML = '';
+  {% if selected_crop %}
+    <h3>📋 जानकारी: {{ selected_crop }}</h3>
+    <p>बिउ छर्ने समय: {{ sowing_time }}</p>
+    <p>काट्न समय लाग्ने दिन: {{ harvesting_days }} दिन</p>
+    <p>पानी हाल्ने अन्तराल: प्रत्येक {{ watering_interval }} दिन</p>
+    <p>मल हाल्ने अन्तराल: प्रत्येक {{ fertilizing_interval }} दिन</p>
 
-      const year = seedDate.getFullYear();
-      const month = seedDate.getMonth();
+    {% for calendar in calendars %}
+      <h4>{{ calendar.month_name }} {{ calendar.year }}</h4>
+      <table>
+        <tr>
+          <th>आइत</th>
+          <th>सोम</th>
+          <th>मंगल</th>
+          <th>बुध</th>
+          <th>बिही</th>
+          <th>शुक्र</th>
+          <th>शनि</th>
+        </tr>
+        {% for week in calendar.weeks %}
+          <tr>
+            {% for day in week %}
+              <td>{{ day|safe }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
 
-      const firstDay = new Date(year, month, 1);
-      const lastDay = new Date(year, month + 1, 0);
-      const startDay = firstDay.getDay();
-
-      const table = document.createElement('table');
-
-      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-      let thead = '<tr>' + days.map(d => `<th>${d}</th>`).join('') + '</tr>';
-      table.innerHTML += thead;
-
-      let date = 1;
-      for (let i = 0; i < 6; i++) {
-        let row = '<tr>';
-        for (let j = 0; j < 7; j++) {
-          if (i === 0 && j < startDay) {
-            row += '<td></td>';
-          } else if (date > lastDay.getDate()) {
-            row += '<td></td>';
-          }
-          else {
-            const currentDate = new Date(year, month, date);
-            const diffDays = Math.floor((currentDate - seedDate) / (1000 * 60 * 60 * 24));
-            let emoji = '';
-
-            if (diffDays === 0) emoji = emojis.seed;
-            else if (diffDays > 0 && diffDays % 5 === 0) emoji += emojis.water;
-            if (diffDays > 0 && diffDays % 15 === 0) emoji += emojis.fertilize;
-            if (diffDays === 90) emoji += emojis.harvest;
-
-            row += `<td>${date}<br>${emoji}</td>`;
-            date++;
-          }
-        }
-        row += '</tr>';
-        table.innerHTML += row;
-
-        if (date > lastDay.getDate()) break;
-      }
-
-      calendarContainer.appendChild(table);
-    };
-
-    // Event listener for date input
-    document.getElementById('seed-date').addEventListener('change', (e) => {
-      generateCalendar(e.target.value);
-    });
-  </script>
-
-</body>
-</html>
+{% block styles %}
+<style>
+  select {
+    font-size: 16px;
+    padding: 6px;
+    margin: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+  }
+  th {
+    background-color: #cdebb0;
+  }
+  h2 {
+    margin-top: 20px;
+    text-align: center;
+  }
+</style>
+{% endblock %}

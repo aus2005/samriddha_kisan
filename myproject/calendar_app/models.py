@@ -1,3 +1,4 @@
+# calendar_app/models.py
 from django.db import models
 
 class Crop(models.Model):
@@ -8,10 +9,10 @@ class Crop(models.Model):
 
 class CropEvent(models.Model):
     EVENT_TYPES = [
-        ('watering', 'Watering'),
-        ('seeding', 'Seeding'),
-        ('harvesting', 'Harvesting'),
-        ('fertilizing', 'Fertilizing'),
+        ('watering', 'पानी हाल्ने'),
+        ('seeding', 'बिउ छर्ने'),
+        ('harvesting', 'बाली काट्ने'),
+        ('fertilizing', 'मल हाल्ने'),
     ]
     crop = models.ForeignKey(Crop, on_delete=models.CASCADE)
     event_type = models.CharField(max_length=20, choices=EVENT_TYPES)
