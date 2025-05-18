@@ -38,5 +38,4 @@ def save_user_profile(sender, instance, **kwargs):
     try:
         instance.profile.save()
     except Profile.DoesNotExist:
-        # Fallback: create the profile if it doesn't exist
         Profile.objects.create(user=instance)

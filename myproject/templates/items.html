@@ -2,13 +2,15 @@
 {% block title %}बजार (Marketplace){% endblock %}
 
 {% block content %}
+
+
 <div class="grid grid-cols-4 gap-6 bg-green-50 p-6 rounded-2xl min-h-screen">
-
-
   <div class="bg-white p-6 rounded-2xl shadow">
     <form method="get">
       <input type="text" name="query" placeholder="के खोज्नु भयो?" value="{{ query }}" class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400" />
-      <button type="submit" class="mt-3 w-full py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition">🔍 खोज्नुहोस्</button>
+      <button type="submit" class="mt-3 w-full py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition">
+        🔍 खोज्नुहोस्
+      </button>
     </form>
 
     <hr class="my-6 border-green-200" />
@@ -30,9 +32,10 @@
       {% endfor %}
     </ul>
 
-    <a href="{% url 'item:items' %}" class="mt-6 block text-center px-4 py-2 bg-yellow-400 text-white rounded-xl hover:bg-yellow-500 transition">फिल्टर हटाउनुहोस्</a>
+    <a href="{% url 'item:items' %}" class="mt-6 block text-center px-4 py-2 bg-yellow-400 text-white rounded-xl hover:bg-yellow-500 transition">
+      फिल्टर हटाउनुहोस्
+    </a>
   </div>
-
 
   <div class="col-span-3">
     <div class="grid grid-cols-3 gap-6">
