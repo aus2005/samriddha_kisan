@@ -23,6 +23,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+     path('item/',include('item.urls')),
     path('', views.homepage),
     path('about/', views.about),
     path('posts/', include('posts.urls')),
@@ -34,6 +35,9 @@ urlpatterns = [
     path('market_prices/', include('market_prices.urls')),
     path('crop_monitoring/', include('crop_monitoring.urls')),
     path('weather/', include('weather.urls')),
+    path('calendar/', include('calendar_app.urls')),
+    
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
