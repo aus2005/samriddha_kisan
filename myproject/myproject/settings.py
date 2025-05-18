@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'expense_tracker', 'marketplace', 'selling_planner',
     'weather', 'market_prices', 'crop_monitoring',
     'calendar_app',
-    'item',
+    'item','chat',
 ]
 
 MIDDLEWARE = [

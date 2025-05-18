@@ -36,6 +36,7 @@ urlpatterns = [
     path('crop_monitoring/', include('crop_monitoring.urls')),
     path('weather/', include('weather.urls')),
     path('calendar/', include('calendar_app.urls')),
+     path('chat/', include('chat.urls')),
     
 
 ]
