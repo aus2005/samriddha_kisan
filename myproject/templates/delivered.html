@@ -1,0 +1,15 @@
+<h2>Delivered Items</h2>
+
+<p>Total Delivered: {{ total_delivered }}</p>
+<p>Total Earned: ${{ total_earned }}</p>
+
+<ul>
+  {% for chat in chats %}
+    <li>
+      <strong>{{ chat.item.name }}</strong> - ${{ chat.item.price }}
+      (Delivered on {{ chat.delivered_at }})
+    </li>
+  {% empty %}
+    <li>No deliveries yet.</li>
+  {% endfor %}
+</ul>

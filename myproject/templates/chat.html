@@ -17,6 +17,15 @@
    {%endfor%}
 </div>
 
+{% if request.user == chat.item.created_by and not chat.is_delivered %}
+  <form method="post" action="{% url 'chat:mark_delivered' chat.id %}">
+    {% csrf_token %}
+    <button type="submit">Mark as Delivered</button>
+  </form>
+{% elif chat.is_delivered %}
+  <p><strong>Delivered on:</strong> {{ chat.delivered_at }}</p>
+{% endif %}
+
 <form method="post" action="." class="mt-6">
   {% csrf_token%}
   {{form.as_p}}

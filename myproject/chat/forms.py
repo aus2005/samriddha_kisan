@@ -1,8 +1,8 @@
 from django import forms
-from .models import chatmessages
+from .models import ChatMessage
 class ChatmessagesForm(forms.ModelForm):
   class Meta:
-    model=chatmessages
+    model=ChatMessage
     fields=('content',)
     widgets={
       'content':forms.Textarea(attrs={

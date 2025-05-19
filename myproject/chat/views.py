@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,get_object_or_404,redirect
 from .forms import ChatmessagesForm
-from .models import Chat,Item
+from .models import Chat,Item,ChatMessage
+
+
 
 @login_required
 def new_chats(request,item_pk):
@@ -57,3 +59,4 @@ def detail(request,pk):
     'chat':chat,
     'form':form,
   })
+
