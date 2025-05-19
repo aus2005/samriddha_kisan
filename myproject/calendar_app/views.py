@@ -9,23 +9,36 @@ CROP_GUIDE = {
         'harvesting_days': 90,
         'watering_interval': 5,
         'fertilizing_interval': 15,
-        'seed_date': date(2025, 2, 1)
+        'seed_date': date(2025, 2, 1),
+        'spacing': '75 से.मी. × 45 से.मी.',
+        'depth': 'चोर औलाको माथिल्लो भागको आधा',
+        'seed_rate': '५-७ ग्राम प्रति रोपनी',
+        'notes': 'बिरूवा रोप्नु २० देखि २५ दिन अघि नर्सरी राख्ने',
+        'sowing_time_by_region': {
+            'उच्च पहाड': 'चैत-जेठ',
+            'मध्य पहाड': 'फागुन-भदौ',
+            'तरार्इ': 'भदौ-कात्तिक'
+        }
     },
     'बन्दा': {
         'sowing_time': 'माघ - फागुन',
         'harvesting_days': 75,
         'watering_interval': 4,
         'fertilizing_interval': 12,
-        'seed_date': date(2025, 1, 20)
+        'seed_date': date(2025, 1, 20),
+        'spacing': '45 से.मी. × 30 से.मी.',
+        'depth': 'चोर औलाको माथिल्लो भागको आधा',
+        'seed_rate': '२५ ग्राम प्रति रोपनी',
+        'notes': 'बिरूवा रोप्नु २० देखि २५ दिन अघि नर्सरी राख्ने',
+        'sowing_time_by_region': {
+            'उच्च पहाड': 'जेठ-साउन',
+            'मध्य पहाड': 'चैत-असाेज',
+            'तरार्इ': 'मङ्सिर-माघ'
+        }
     },
-    'भण्टा': {
-        'sowing_time': 'चैत - वैशाख',
-        'harvesting_days': 85,
-        'watering_interval': 6,
-        'fertilizing_interval': 18,
-        'seed_date': date(2025, 3, 15)
-    }
+    
 }
+
 
 def get_calendar_month(seed_date, month_offset, watering_interval, fertilizing_interval, harvesting_day):
     month_date = seed_date.replace(day=1) + timedelta(days=30 * month_offset)
@@ -75,11 +88,17 @@ def crop_calendar_view(request):
         seed_date = guide['seed_date']
 
         context.update({
-            'sowing_time': guide['sowing_time'],
-            'harvesting_days': guide['harvesting_days'],
-            'watering_interval': guide['watering_interval'],
-            'fertilizing_interval': guide['fertilizing_interval']
-        })
+    'sowing_time': guide['sowing_time'],
+    'harvesting_days': guide['harvesting_days'],
+    'watering_interval': guide['watering_interval'],
+    'fertilizing_interval': guide['fertilizing_interval'],
+    'spacing': guide.get('spacing'),
+    'depth': guide.get('depth'),
+    'seed_rate': guide.get('seed_rate'),
+    'notes': guide.get('notes'),
+    'sowing_time_by_region': guide.get('sowing_time_by_region', {})
+})
+
 
         for i in range(3):  # Next 3 months
             calendars.append(get_calendar_month(

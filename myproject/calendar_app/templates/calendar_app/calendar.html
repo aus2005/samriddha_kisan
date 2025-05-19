@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-{% block title %}🌾 बाली पात्रो{% endblock %}
+{% block title %}बाली पात्रो{% endblock %}
 
 {% block content %}
-  <h2>🌾 बाली पात्रो</h2>
+  <h2>बाली पात्रो</h2>
 
   <form method="get">
     <label for="crop-select">बाली छान्नुहोस्:</label>
@@ -16,12 +16,25 @@
   </form>
 
   {% if selected_crop %}
-    <h3>📋 जानकारी: {{ selected_crop }}</h3>
-    <p>बिउ छर्ने समय: {{ sowing_time }}</p>
-    <p>काट्न समय लाग्ने दिन: {{ harvesting_days }} दिन</p>
-    <p>पानी हाल्ने अन्तराल: प्रत्येक {{ watering_interval }} दिन</p>
-    <p>मल हाल्ने अन्तराल: प्रत्येक {{ fertilizing_interval }} दिन</p>
+    <h3>जानकारी: {{ selected_crop }}</h3>
+<div class = "post-container">
+{% if sowing_time_by_region %}
+  <h1>🔍 क्षेत्र अनुसार बिउ छर्ने समय:</h1>
+  <ul>
+    {% for region, time in sowing_time_by_region.items %}
+      <h2><p><strong>{{ region }}:</strong> {{ time }}</p></h2>
+    {% endfor %}
+  </ul>
+{% endif %}
 
+<p>काट्न समय लाग्ने दिन: {{ harvesting_days }} दिन</p>
+<p>पानी हाल्ने अन्तराल: प्रत्येक {{ watering_interval }} दिन</p>
+<p>मल हाल्ने अन्तराल: प्रत्येक {{ fertilizing_interval }} दिन</p>
+<p>रोपाई दूरी: {{ spacing }}</p>
+<p>रोपाई गहिराई: {{ depth }}</p>
+<p>बीउदर / राेपनी: {{ seed_rate }}</p>
+<p>टिप्पणी: {{ notes }}</p>
+</div>
     {% for calendar in calendars %}
       <h4>{{ calendar.month_name }} {{ calendar.year }}</h4>
       <table>
@@ -45,31 +58,84 @@
     {% endfor %}
   {% endif %}
 {% endblock %}
-
 {% block styles %}
 <style>
+  
+
+  h2, h3, h4, h1 {
+    text-align: center;
+    margin: 20px 0 10px;
+    color: #2a5d34;
+  }
+
+  form {
+    text-align: center;
+    margin: 20px;
+  }
+
   select {
     font-size: 16px;
-    padding: 6px;
-    margin: 10px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #8fc263;
+    background-color: #f2f9ec;
   }
+
+  .post-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f6fff0;
+    padding: 20px;
+    border: 1px solid #d3eac2;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(143, 194, 99, 0.2);
+  }
+
+  p {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
   table {
     border-collapse: collapse;
     margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
   }
+
   th, td {
-    border: 1px solid #ccc;
-    width: 50px;
-    height: 50px;
+    border: 1px solid #d6e6c3;
+    width: 14.28%; /* Equal width for 7 columns */
+    height: 60px;
     text-align: center;
     font-size: 16px;
+    vertical-align: middle;
   }
+
   th {
     background-color: #cdebb0;
+    font-weight: bold;
   }
-  h2 {
-    margin-top: 20px;
-    text-align: center;
+
+  td {
+    background-color: #fefefe;
   }
+
+  
 </style>
 {% endblock %}
+
